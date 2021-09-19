@@ -32,7 +32,7 @@ function App() {
           {resp &&
             <div className={'response'}>
               <code>
-                {JSON.stringify(resp)}
+                {JSON.stringify(resp)} 
               </code>
             </div>
           }
@@ -53,7 +53,7 @@ function App() {
               type={'password'}
               name={'password'}/>
           </div>
-          <button type={'submit'}>Submit</button>
+          <button type={'submit'}>Login</button>
         </form>
         </div>
       </header>
