@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router';
-
+import axios from 'axios';
+import { useHistory } from "react-router-dom";
 
 function Login() {
+  const history = useHistory();
+
   const [ resp, changeResponse ] = useState(null);
   const [ username, changeUsername ] =  useState('');
   const [ password, changePassword ] =  useState('');
@@ -23,12 +26,11 @@ function Login() {
   }
 
   if(resp && 'key' in resp && username === 'admin') {console.log(resp); 
-    window.location.replace("https://google.com/");
-    <Redirect from='/' to="/Admin"/>  }
+    history.push("/admin");
+  }
 
   else if(resp && 'key' in resp && username === 'user') {
-    // window.location.replace("https://bing.com/");
-    window.location.href = "/User";
+    history.push("/user");
   }
 
 

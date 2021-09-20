@@ -2,7 +2,7 @@
 import './App.css';
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Login, User} from "./components";
+import { Admin, Login, User} from "./components";
 
 function App() {
   return (
@@ -10,6 +10,8 @@ function App() {
       <Router>
         <Switch>
           <Route path="/" exact component={() => <Login />} />
+          <Route path="/User" exact component={() => <User />} />
+          <Route path="/Admin" exact component={() => <Admin />} />
         </Switch>
       </Router>
     </div>

@@ -74,7 +74,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, '../../React/frontend/build')
+            # os.path.join(BASE_DIR, '../../React/frontend/build')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -123,6 +123,9 @@ AUTH_PASSWORD_VALIDATORS = [
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS' : 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE' : 10,
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny'
+    ]
 }
 
 
@@ -145,7 +148,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, '../../React/frontend/build/static'),
+    # os.path.join(BASE_DIR, '../../React/frontend/build/static'),
 ]
 
 # Default primary key field type
