@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     # Our Apps
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -120,6 +121,9 @@ REST_FRAMEWORK = {
     'PAGE_SIZE' : 10,
 }
 
+REST_AUTH_SERIALIZERS = {
+    'TOKEN_SERIALIZER': 'core.serializers.token_serializer',
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
