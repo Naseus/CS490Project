@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router';
-import axios from 'axios';
 import { useHistory } from "react-router-dom";
 
 function Login() {
@@ -25,14 +23,14 @@ function Login() {
     }).catch(error => console.log('error ->', error))
   }
 
-  if(resp && 'key' in resp && username === 'admin') {console.log(resp); 
-    history.push("/admin");
+  if(resp && 'is_super' in resp) {
+    if (resp['is_super']) {
+      history.push("/admin");
+    }
+    else {
+      history.push("/user");
+    }
   }
-
-  else if(resp && 'key' in resp && username === 'user') {
-    history.push("/user");
-  }
-
 
   return (
     <div className="App">
@@ -40,16 +38,7 @@ function Login() {
         <h1>
           Login
         </h1>
-    
-        <div>
-          {resp &&
-            <div className={'response'}>
-              <code>
-                {JSON.stringify(resp)} 
-              </code>
-            </div>
-          }
-        </div>
+
         <div>
         <form onSubmit={onSubmit}>
           <div>
