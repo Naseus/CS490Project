@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router';
-import axios from 'axios';
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 
 function Login() {
   const history = useHistory();
@@ -25,12 +23,19 @@ function Login() {
     }).catch(error => console.log('error ->', error))
   }
 
-  if(resp && 'key' in resp && username === 'admin') {console.log(resp); 
-    history.push("/admin");
+  function handleClick(e, location) {
+    e.preventDefault();
+    <Redirect from='' to="$location" />
+  }
+
+  if(resp && 'key' in resp && username === 'admin') {
+    console.log(resp); 
+    history.push("/administrator");
   }
 
   else if(resp && 'key' in resp && username === 'user') {
-    history.push("/user");
+     history.push("/user");
+    
   }
 
 
@@ -57,6 +62,7 @@ function Login() {
               onChange={(e) => changeUsername(e.target.value)}
               value={username}
               type={'input'}
+              placeholder={'Username'}
               name={'username'}/>
           </div>
           <div>
@@ -64,9 +70,10 @@ function Login() {
               onChange={(e) => changePassword(e.target.value)}
               value={password}
               type={'password'}
+              placeholder={'Password'}
               name={'password'}/>
           </div>
-          <button type={'submit'}>Login</button>
+          <button type={'submit'}>Login</button>   
         </form>
         </div>
       </header>

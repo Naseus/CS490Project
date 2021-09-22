@@ -3,12 +3,12 @@ import React from "react";
 function User() {
   return (
     <div className="user">
-      <div class="container">
-        <div class="row align-items-center my-5">
-          <div class="col-lg-7">
+      <div className="container">
+        <div className="row align-items-center my-5">
+          <div className="col-lg-7">
           </div>
-          <div class="col-lg-5">
-            <h1 class="font-weight-light">USER LOGGED IN</h1>
+          <div className="col-lg-5">
+            <h1 className="font-weight-light">USER LOGGED IN</h1>
             <p>
               TEXT
             </p>
