@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'corsheaders',
 
     # Our Apps
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -128,6 +129,9 @@ REST_FRAMEWORK = {
     ]
 }
 
+REST_AUTH_SERIALIZERS = {
+    'TOKEN_SERIALIZER': 'core.serializers.token_serializer',
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
