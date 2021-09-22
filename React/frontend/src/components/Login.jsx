@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 
 function Login() {
   const history = useHistory();
+  var resp_msg = '';
 
   const [ resp, changeResponse ] = useState(null);
   const [ username, changeUsername ] =  useState('');
@@ -23,12 +24,18 @@ function Login() {
     }).catch(error => console.log('error ->', error))
   }
 
-  if(resp && 'is_super' in resp) {
-    if (resp['is_super']) {
-      history.push("/admin");
+  if(resp) {
+
+    if ('is_super' in resp) {
+      if (resp['is_super']) {
+        history.push("/admin");
+      }
+      else {
+        history.push("/user");
+      }
     }
     else {
-      history.push("/user");
+      resp_msg = Object.values(resp);
     }
   }
 
@@ -38,6 +45,16 @@ function Login() {
         <h1>
           Login
         </h1>
+
+        <div>
+          {resp &&
+            <div className={'response'}>
+              <code>
+                {resp_msg} 
+              </code>
+            </div>
+          }
+        </div>
 
         <div>
         <form onSubmit={onSubmit}>
