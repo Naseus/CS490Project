@@ -10,7 +10,7 @@ function Login() {
   const [ password, changePassword ] =  useState('');
 
   function onSubmit(e) {
-     e.preventDefault();
+    e.preventDefault();
     return fetch('http://localhost:8000/auth/login/', {
       method: 'POST',
       credentials: 'omit',
@@ -25,7 +25,6 @@ function Login() {
   }
 
   if(resp) {
-
     if ('is_super' in resp) {
       if (resp['is_super']) {
         history.push("/admin");
@@ -34,8 +33,21 @@ function Login() {
         history.push("/user");
       }
     }
+    
     else {
-      resp_msg = Object.values(resp);
+      if (username && password) {
+        resp_msg = 'Unable to log in with the provided credentials';
+        console.log(resp_msg);
+      }
+      else if (username && !password) {
+        resp_msg = 'Password field may not be left blank.'
+      }
+      else if (!username && password) {
+        resp_msg = 'Username field may not be left blank.'
+      }
+      else if (!username && !password) {
+        resp_msg = 'Please enter your credentials.'
+      }
     }
   }
 
