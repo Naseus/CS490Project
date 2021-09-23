@@ -25,6 +25,7 @@ function Login() {
   }
 
   if(resp) {
+
     if ('is_super' in resp) {
       if (resp['is_super']) {
         history.push("/admin");
@@ -33,20 +34,10 @@ function Login() {
         history.push("/user");
       }
     }
-    
     else {
-      if (username && password) {
-        resp_msg = 'Unable to log in with the provided credentials';
-        console.log(resp_msg);
-      }
-      else if (username && !password) {
-        resp_msg = 'Password field may not be left blank.'
-      }
-      else if (!username && password) {
-        resp_msg = 'Username field may not be left blank.'
-      }
-      else if (!username && !password) {
-        resp_msg = 'Please enter your credentials.'
+      resp_msg = Object.values(resp);
+      if (resp_msg == 'This field may not be blank.') {
+        resp_msg = 'Must include "username" and "password".';
       }
     }
   }
